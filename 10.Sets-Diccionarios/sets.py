@@ -7,4 +7,9 @@ personas = {"Mikel", "Antonio", "Maria"}
 personas.add("Miguel")
 personas.remove("Antonio")
 
-print(personas  )
+print(personas)
+
+personas.add(8)
+print(personas)
+
+

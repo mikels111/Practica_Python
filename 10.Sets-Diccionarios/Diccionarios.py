@@ -11,4 +11,5 @@ persona = {
     1 : "hola"
     }
 
-print(str(persona[1]) + " " + persona["nombre"])
+print(str(persona[1]) + " " + persona["nombre"] + " Tienes " + str(persona["edad"]) + " años")
+
