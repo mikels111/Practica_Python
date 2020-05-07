@@ -16,15 +16,3 @@ def comprobar(var, tipo):
         tipo_de_dato = f"El tipo de dato es {tipo}"
 
     return tipo_de_dato
-
-lista = [4, 9, 43, 3]
-texto = "hola"
-entero = 89
-buleano = True
-
-print(comprobar(lista, list))
-
-"""getTipo(lista)
-getTipo(texto)
-getTipo(entero)
-getTipo(buleano)"""
