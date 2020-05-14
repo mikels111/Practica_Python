@@ -26,7 +26,7 @@ elemento = int(input("Escribe el elemento que quieres buscar"))
     # Comprobación de que el valor introducido sea int
 comprobacion = isinstance(elemento, int)
 
-while not comprobacion or elemento <= 0:
+while not comprobacion or elemento <= 0: # No se puede saber la longitud de un valor numerico
     elemento = int(input("Escribe el elemento que quieres buscar"))
     print(comprobacion)
 else:
