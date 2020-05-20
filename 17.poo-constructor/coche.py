@@ -8,6 +8,11 @@ class Coche:
     caballaje = 400
     plazas = 3
 
+    soy_publico = "Soy un atributo publico"
+    __soy_privado = "Soy un atributo privado" # Dos guiones al principio para
+    #definir un atributo privado
+
+
     def __init__(self, color, marca, modelo, velocidad, caballaje, plazas):
         self.color = color
         self.marca = marca
@@ -16,6 +21,10 @@ class Coche:
         self.plazas = plazas
 
     # Métodos, son acciones que hace el objeto (coche)
+
+    def get_privado(self):
+        return self.__soy_privado
+
     def setColor(self, color):
         self.color = color
 

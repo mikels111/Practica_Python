@@ -1,7 +1,7 @@
 # Capturar excepciones y manejar errores en código susceptible a fallos
 try:
     nombre = input("¿Cual es tu nombre?")
-    
+
     if len(nombre) > 1:
         nombre_usuaario = "El nombre es" + nombre
 
@@ -63,5 +63,6 @@ if edad < 5 or edad > 110:
 elif len(nombre) < 1:
     raise ValueError("El nombre no está completo")
 else:
-    print("Bienvenido")
+    print("Bienvenido :" + nombre)
+
 
