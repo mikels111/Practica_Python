@@ -2,7 +2,7 @@
 import sqlite3
 
 # Conexión
-conexion = sqlite3.connect("pruebas.db")
+conexion = sqlite3.connect("./19.bases_de_datos/pruebas.db")
 
 # Crear cursor
 cursor = conexion.cursor()
