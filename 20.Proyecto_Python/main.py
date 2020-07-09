@@ -2,7 +2,7 @@
 Proyecto Python:
     -abrir asistente
     -login o registro
-    -si elegimos registro, creará un usuario en la bbdd
+    -si elegimos registrno, creará un usuario en la bbdd
     -si elegimos login, identifica al usuario y nos preguntará
     -crear nota, mostrar nota, borrarlas
 
