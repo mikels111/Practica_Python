@@ -19,7 +19,7 @@ Acciones disponibles:
 # Objeto Acciones del modulo acciones.py
 objectAcciones = acciones.Acciones()
 
-accion = input("¿Que quieres hacer?: ")
+accion = input("¿Que quieres hacer?| ")
 
 if accion == "registro" :
     objectAcciones.registro() # Llamada al método registro del objeto "accion"

@@ -1,3 +1,6 @@
+
+####### Este archivo es para crear la base de datos #######
+
 # Importar modulo
 import sqlite3
 

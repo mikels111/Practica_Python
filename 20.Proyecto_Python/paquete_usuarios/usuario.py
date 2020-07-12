@@ -1,26 +1,12 @@
-#import mysql.connector
-
-"""
-
- ######## CON MYSQL NO HE PODIDO ########
-
-"""
-import sqlite3
+import paquete_usuarios.conexion as moduloConexion
 import datetime
-'''database = mysql.connector.connect(
-    host = "localhost",
-    user = "root",
-    passwd = "Cebanc1920",
-    database = "proyecto_python",
-    port = 3306
-)'''
-#cursor = database.cursor(buffered=True)
+import hashlib
 
-# Conexión
-conexion = sqlite3.connect("./20.Proyecto_Python/base.db")
 
-# Crear cursor
-cursor = conexion.cursor()
+connect = moduloConexion.conectar()
+conexion = connect[0]
+cursor = connect[1]
+
 
 class Usuario:
     
@@ -33,14 +19,33 @@ class Usuario:
     def registrar(self):
         fecha = str(datetime.datetime.now())
 
-        usuario = (self.nombre, self.apellidos, self.email, self.password, fecha)
-        sql = "INSERT INTO usuarios VALUES(null, ?, ?, ?, ?, ?)"
-        
-        cursor.execute(sql, usuario)
-        conexion.commit()
+        # cifrar contraseña
+        cifrado = hashlib.sha256()
+        cifrado.update(self.password.encode('utf8')) 
 
-        return [cursor.rowcount, self]
+        sql = "INSERT INTO usuarios VALUES(null, ?, ?, ?, ?, ?)"
+        usuario = (self.nombre, self.apellidos, self.email, cifrado.hexdigest(), fecha)
+
+        try:
+            cursor.execute(sql, usuario)
+            conexion.commit()
+            result = [cursor.rowcount, self]
+        except:
+            result = [0, self]
+        
+        return result
 
 
     def identificar(self):
-        return self.nombre
+        sql = "SELECT * FROM usuarios WHERE email = ? AND password = ?"
+
+        # cifrar contraseña
+        cifrado = hashlib.sha256()
+        cifrado.update(self.password.encode('utf8'))
+
+        usuario = (self.email, cifrado.hexdigest())
+
+        cursor.execute(sql, usuario)
+        result = cursor.fetchone()
+
+        return result
