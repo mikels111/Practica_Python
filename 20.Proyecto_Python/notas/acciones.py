@@ -16,9 +16,23 @@ class Acciones:
         else:
             print("no se ha guardado la nota")
 
-    def mostrar(self, usuario)
+    def mostrar(self, usuario):
         print("Estas son tus notas: ")
 
-        nota = modelo_nota.Nota(usuario_id)
+        nota = modelo_nota.Nota(usuario[0])
         notas = nota.listar()
-        print(notas)
+
+        for nota in notas:
+            print("#############################")
+            print(f"Titulo de la nota: {nota[2]}")
+            print(f"Contenido de la nota: {nota[3]}")
+
+    def eliminar(self, usuario):
+        titulo = input("Introduce el titulo de la nota que quieres eliminar")
+        nota = modelo_nota.Nota(usuario[0], titulo)
+        eliminar = nota.eliminar()
+
+        if eliminar[0] >= 1:
+            print(f"La nota {nota.titulo} ha sido eliminada")
+        else:
+            print(f"La nota {nota.titulo} no ha sido eliminada")
