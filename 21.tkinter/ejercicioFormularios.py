@@ -4,63 +4,67 @@ Calculadora
 - Dos campos de texto
 - 4 botones para las operaciones
 - Mostrar el resultado en una alerta
-
 """
 from tkinter import *
 from tkinter import messagebox as MessageBox
 
 ventana = Tk()
 ventana.title("Calculadora")
-ventana.geometry("150x160")
+ventana.geometry("200x200")
 
-class formulario(self):
+class Formulario:
 
-    numero1 = StringVar()
-    numero2 = StringVar()
-    resultado = StringVar()
-    
-    def suma(self):
-        #resultado.set(numero1.get() + numero2.get())
+    def __init__(self):
+        self.numero1 = StringVar()
+        self.numero2 = StringVar()
+        self.resultado = StringVar()    
+
+    def comprobar(self, numero):
         try:
-            MessageBox.showinfo("Resultado", float(numero1.get()) + float(numero2.get()))
-            numero1.set("")
+            result = float(numero)
         except:
+            result = 0
             MessageBox.showerror("Resultado", "Ha ocurrido un error")
         
+        return result
 
+    def suma(self):
+        self.resultado = self.comprobar(self.numero1.get()) + self.comprobar((self.numero2.get()))
+        self.numero1.set("")
+        self.numero2.set("")
+        self.mostrarResultado()
+        
+        
     def resta(self):
-        #    resultado.set(numero1.get() - numero2.get())
-        try:
-            MessageBox.showinfo("Resultado", float(numero1.get()) - float(numero2.get()))
-            numero1.set("")
-        except:
-            MessageBox.showerror("Resultado", "Ha ocurrido un error")
+        self.resultado = self.comprobar(self.numero1.get()) - self.comprobar((self.numero2.get()))
+        self.numero1.set("")
+        self.numero2.set("")
+        self.mostrarResultado()
 
     def multi(self):
-        #    resultado.set(numero1.get() * numero2.get())
-        try:
-            MessageBox.showinfo("Resultado", float(numero1.get()) * float(numero2.get()))
-            numero1.set("")
-        except:
-            MessageBox.showerror("Resultado", "Ha ocurrido un error")
-            
-    def division(self):
-        #    resultado.set(numero1.get() / numero2.get())
-        try:
-            MessageBox.showinfo("Resultado", float(numero1.get()) / float(numero2.get()))
-            numero1.set("")
-        except:
-            MessageBox.showerror("Resultado", "Ha ocurrido un error")
+        self.resultado = "Resultado", self.comprobar(self.numero1.get()) * self.comprobar((self.numero2.get()))
+        self.numero1.set("")
+        self.numero2.set("")
+        self.mostrarResultado()
 
-            
+    def division(self):
+        self.resultado = self.comprobar(self.numero1.get()) / self.comprobar(self.numero2.get())
+        self.numero1.set("")
+        self.numero2.set("")
+        self.mostrarResultado()
+
+    def mostrarResultado(self):
+        MessageBox.showinfo("Resultado", self.resultado) 
+
+formulario1 = Formulario()
+
+# Entradas de texto
+entry_1 = Entry(ventana, textvariable=formulario1.numero1).grid(column=2, pady=4)
+entry_2 = Entry(ventana, textvariable=formulario1.numero2).grid(column=2, pady=4)  
+
 label = Label(ventana,text="")
 label.grid(columnspan=2)
 label.config(padx=5)
-
-
-# Entradas de texto
-entry_1 = Entry(ventana, textvariable=numero1).grid(column=2, pady=4)
-entry_2 = Entry(ventana, textvariable=numero2).grid(column=2, pady=4)
 
 # Marco
 marco = Frame(ventana, width=120, height=100)
@@ -69,10 +73,10 @@ marco.grid(column=2)
 #marco.pack_propagate(False)para que no se deforme el marco
 
 # Botones
-boton_suma = Button(marco, text="+", command=suma).grid(padx=5, pady=5, column=1, row=1)
-boton_resta = Button(marco, text="-", command=resta).grid(padx=5, pady=5, column=2, row=1)
-boton_multi = Button(marco, text="x", command=multi).grid(padx=5, pady=5, column=1, row=2)
-boton_divi = Button(marco, text="/", command=division).grid(padx=5, pady=5, column=2, row=2)
+boton_suma = Button(marco, text="+", command=formulario1.suma).grid(padx=5, pady=5, column=1, row=1)
+boton_resta = Button(marco, text="-", command=formulario1.resta).grid(padx=5, pady=5, column=2, row=1)
+boton_multi = Button(marco, text="x", command=formulario1.multi).grid(padx=5, pady=5, column=1, row=2)
+boton_divi = Button(marco, text="/", command=formulario1.division).grid(padx=5, pady=5, column=2, row=2)
 
 # Label resultado
 #Label(ventana, textvariable=resultado).grid(column=2)
