@@ -43,7 +43,8 @@ def nombrar():
 
 def abrirNueva():
     nuevaVent = Toplevel(ventana)# Abre una nueva ventana
-    
+
+nuevaVent = Tk()   
 nuevaVent.geometry("300x400")
 Label(nuevaVent, text="Introduce el nuevo producto").grid(row=0, column=0, padx=0, pady=0, sticky=W)
    
