@@ -25,6 +25,10 @@ urlpatterns = [
     path('hola_mundo/', mi_app.views.hola_mundo, name='hola_mundo'),
     path('inicio/', mi_app.views.index, name='inicio'),
     path('pagina/', mi_app.views.pagina, name='pagina'),
+    path('pagina/<int:redirigir>', mi_app.views.pagina, name='pagina'),
     path('',mi_app.views.index, name='index'),
+    path('contacto/',mi_app.views.contacto, name='contacto'),
+    path('contacto/<str:nombre>/',mi_app.views.contacto, name='contacto'),
+    path('contacto/<str:apellido>',mi_app.views.contacto, name='contacto'),
     path('contacto/<str:nombre>/<str:apellido>',mi_app.views.contacto, name='contacto')
 ]
