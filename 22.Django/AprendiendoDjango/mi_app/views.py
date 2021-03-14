@@ -31,8 +31,8 @@ def index(request):
         year += 1
 
     html += "</ul>"
-    # return render(request, 'index.html')
-    return HttpResponse(html)
+    return render(request, 'index.html')
+    # return HttpResponse(layout + html)
 
 
 def hola_mundo(request):
@@ -42,6 +42,7 @@ def hola_mundo(request):
 def pagina(request, redirigir=0):
     if redirigir == 1:
         # return redirect("inicio")# inicio es el nombre de la url
+        # el nombre "contacto" es el atributo "name" de la url no la ruta
         return redirect("contacto", nombre="Antonio", apellido="seara")
     return render(request, 'pagina.html')
 

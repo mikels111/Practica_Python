@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title%} 
+        
+        {% endblock%}  
+        | Mikel
+    </title>
+    <link rel></link>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <header>
+        <div id="logotipo">
+            <h1>Sitio web con Django</h1>
+        </div>
+    </header>
+
+    <nav>
+        <hr />
+        <ul>
+            <li><a href="/inicio">Inicio</a></li>
+            <li><a href="/hola_mundo">Hola mundo</a></li>
+            <li><a href="/pagina">Pagina pruebas</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+        <hr />
+    </nav>
+    
+    
+    <div id="content">
+        <h2 class="title">Titulo prueba</h2>
+        {% block content %}
+        <strong>contenido de la pagina</strong> 
+        {% endblock %}
+    </div>
+</body>
+
+</html>

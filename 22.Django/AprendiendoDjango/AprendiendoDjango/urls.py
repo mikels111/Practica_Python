@@ -18,7 +18,7 @@ from django.urls import path
 
 # importar app con mis vistas
 # from mi_app import views
-import mi_app.views
+import mi_app.views 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
