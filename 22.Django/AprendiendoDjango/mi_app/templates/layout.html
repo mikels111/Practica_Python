@@ -20,27 +20,33 @@
 <body>
     <header>
         <div id="logotipo">
+            <img src="{% static 'images/logo.png' %}">
             <h1>Sitio web con Django</h1>
         </div>
     </header>
 
     <nav>
-        <hr />
         <ul>
             <li><a href="/inicio">Inicio</a></li>
             <li><a href="/hola_mundo">Hola mundo</a></li>
             <li><a href="/pagina">Pagina pruebas</a></li>
             <li><a href="/contacto">Contacto</a></li>
         </ul>
-        <hr />
     </nav>
+    <div class="barra">
+        <span class="esquina-izquierda"></span>
+        <span class="relleno-barra"></span>
+        <span class="esquina-derecha"></span>
+    </div>
     
     
     <div id="content">
-        <h2 class="title">Titulo prueba</h2>
-        {% block content %}
-        <strong>contenido de la pagina</strong> 
-        {% endblock %}
+        <div class="box">
+            {% block content %}
+            <strong>contenido de la pagina</strong> 
+            {% endblock %}
+        </div>
+        
     </div>
 </body>
 
