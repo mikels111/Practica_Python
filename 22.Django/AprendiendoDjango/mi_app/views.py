@@ -20,18 +20,31 @@ layout = """
 
 
 def index(request):
-    html = """
-        <h1>Inicio</h1>    
-        <ul>
-    """
-    year = 2020
-    while year <= 2080:
-        if year % 2 == 0:
-            html += f"<li>{str(year)}</li>"
-        year += 1
+    # html = """
+    #     <h1>Inicio</h1>
+    #     <ul>
+    # """
+    # year = 2020
+    # while year <= 2080:
+    #     if year % 2 == 0:
+    #         html += f"<li>{str(year)}</li>"
+    #     year += 1
 
-    html += "</ul>"
-    return render(request, 'index.html')
+    # html += "</ul>"
+
+    year = 2021
+    hasta = range(year, 2051)
+
+    nombre = 'Mikel'
+    lenguajes = ['Javascript', 'Python', 'Java']
+
+    return render(request, 'index.html', {
+        'mi_variable': 'soy un dato que está en la vista',
+        'title': 'Inicio desde views',
+        'nombre': nombre,
+        'lenguajes': lenguajes,
+        'years': hasta
+    })
     # return HttpResponse(layout + html)
 
 
@@ -44,7 +57,10 @@ def pagina(request, redirigir=0):
         # return redirect("inicio")# inicio es el nombre de la url
         # el nombre "contacto" es el atributo "name" de la url no la ruta
         return redirect("contacto", nombre="Antonio", apellido="seara")
-    return render(request, 'pagina.html')
+    return render(request, 'pagina.html', {
+        'texto': 'Esto es un texto',
+        'lista': ['uno', 'dos', 'tres']
+    })
 
 
 def contacto(request, nombre="", apellido=""):

@@ -1,7 +1,24 @@
 {% extends 'layout.html' %}
 
-{% block title %} Inicio {% endblock %}
+{% block title %} {{title}} {% endblock %}
 {% block content %}
-<h1 class="title">Inicio</h1>    
-<p>Años hasta el 2050</p>
+{% comment "esto es un comentario" %}asdfsdf{% endcomment %}
+<h1 class="title">{{title}}</h1>
+
+<p>{{mi_variable}}</p>
+
+{% if nombre and nombre == 'Mikel' %}
+    <p>{{nombre}}</p>
+{% else %}
+    <strong>El nombre no existe</strong>
+{% endif %}
+<ul>
+    {% for lenguaje in lenguajes %}
+        <li>{{forloop.counter}} {{lenguaje}} </li><!--{{forloop.first}} {{forloop.refcounter}}  -->
+    {%empty%}
+        <p>No hay lenguajes para mostrar</p>
+    {% endfor %}
+</ul>
+{% include 'fecha_actual.html' with saludo='Hola mundo desde include'%} {% comment %}incluir otras templates en otras templates. Se añade with para pasarle argumentos. Para no heredar ninguna variable de la llamada desde views.py se le pone only en el include{% endcomment %}
+
 {% endblock %}

@@ -1,0 +1,13 @@
+<hr>
+<h2>Template fecha_actual.html</h2>
+<h1>Bienvenido {{nombre}}, {{saludo}}</h1>{% comment %} la variable nombre se pasa en el metodo de las views para llamar a index.html pero como incluimos fecha_actual.html en index podemos mostrarla en esta{% endcomment %}
+<h2>Estamos a 2021</h2>
+<p>Años hasta el 2050</p>
+<ul>
+    {% for year in years %}
+        {% if year|divisibleby:2 == True %} 
+        {% comment %} |divisibleby devuelve true si es divisible entre el numero especificado. |divisibleby es un filtro{% endcomment %}
+            <li>{{year}}</li>
+        {% endif %}
+    {% endfor %}
+</ul>

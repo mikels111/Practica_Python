@@ -1,5 +1,15 @@
 {% extends 'layout.html' %} {% block title %}Pagina de pruebas {% endblock %}
 {%block content %}
 <h1 class="title">Esto es la primera página</h1>
-<h2>Creado por Mikel Seara</h2>
+<h2>{{"Creado por Mikel Seara"| cut:" "}}</h2>{% comment %}Los filtros se ponen con tuberia "|"(Alt Gr + 1). Cut quita un caracter indicado en un String {% endcomment %}
+<p>{{texto| default:'no hay nada'}}</p> {% comment %} Si una variable no tiene valor se puede utilizar el filtro 'default'{% endcomment %}
+<p>{{lista|first}}</p> {% comment %}de la variable lista que viene de views se le puede poner un filtro para que muestre el primer elemento de la lista{% endcomment %}
+<p>{{lista|join:', '}}</p>{% comment %}para mostrar la lista de elementos separados por comas{% endcomment %}
+<p>{{lista|length}}</p> {% comment %}Longitud de la lista{% endcomment %}
+<p>{{texto|upper}}</p> {% comment %}El texto en mayuscula y 'lower' en minuscula{% endcomment %}
+<p>{{lista|random}}</p>{% comment %}Muestra elementos aleatorios de una lista{% endcomment %}
+<p>{{"<h1>Python Django</h1> <strong>Mikel</strong>"|striptags}}</p>{% comment %}Striptags quita las etiquetas en el String{% endcomment %}
+<p>{{"<h1>Python Django</h1> <strong>Mikel</strong> <p>hola mundo</p>"|striptags|wordcount}}</p>{% comment %}Se pueden utilizar dos filtros en un solo string. Wordcount cuenta las palabras que tiene el string{% endcomment %}
+{% load filters %}
+<p>{{"Mikel Seara"|saludo|safe}}</p>
 {% endblock %}
