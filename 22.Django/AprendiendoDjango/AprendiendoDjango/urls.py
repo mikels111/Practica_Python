@@ -30,5 +30,9 @@ urlpatterns = [
     path('contacto/',mi_app.views.contacto, name='contacto'),
     path('contacto/<str:nombre>/',mi_app.views.contacto, name='contacto'),
     path('contacto/<str:apellido>',mi_app.views.contacto, name='contacto'),
-    path('contacto/<str:nombre>/<str:apellido>',mi_app.views.contacto, name='contacto')
+    path('contacto/<str:nombre>/<str:apellido>',mi_app.views.contacto, name='contacto'),
+    path('crear_articulo/<str:title>/<str:content>/<str:public>', mi_app.views.crear_articulo, name='crear_articulo'),
+    path('articulo/', mi_app.views.articulo, name='articulo'),
+    path('articulo_edit/<int:id>', mi_app.views.editar_articulo, name='editar_articulo'),
+    path('articulos/', mi_app.views.articulos, name='articulos')
 ]
