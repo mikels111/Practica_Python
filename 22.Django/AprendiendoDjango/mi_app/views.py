@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from mi_app.models import Article
+from django.db.models import Q# Para hacer consultas con 'or' 
 # Create your views here.
 # MVC = modelo vista controlador --> acciones (métodos)
 #        ||      ||       ||
@@ -107,7 +108,29 @@ def editar_articulo(request, id):
 
 
 def articulos(request):
+    # [:3], en vez de all si ponemos order_by() se ordena por id, también se puede poner order_by(title) por la columna title
     articulos = Article.objects.all()
+    # [:3] es el limit, también se puede poner [3:7] para mostrar solo del 3 al 7 sin incluir el 3
+
+    # se pueden poner mas de una condicion
+    # articulos = Article.objects.filter(id__gte=6)
+    # gt es greater than, gte para mayores e igual al numero,lt es less than: menores a el numero, lte menores o igual al numero
+
+    # articulos = Article.objects.filter(
+    #     title__contains='articulo')  # Condicion que contenga articulo, también se puede poner title__exact y title__iexact
+    # articulos = Article.objects.filter(title='articulo', id=3)# Condicion
+    
+    # articulos = Article.objects.filter(title='articulo').exclude(public=True)#exclude va a excluir a los que tengan el campo public a true
+    articulos = Article.objects.raw('SELECT * FROM mi_app_article')
+
+    articulos = Article.objects.filter(Q(content__contains='nuevo')| Q(content__contains='3'))#la Q es necesaria para hacer consultas con 'or'
     return render(request, 'articulos.html', {
         'articulos': articulos
     })
+
+
+def borrar_articulo(request, id):
+    articulo = Article.objects.get(pk=id)
+    articulo.delete()
+
+    return redirect('articulos')

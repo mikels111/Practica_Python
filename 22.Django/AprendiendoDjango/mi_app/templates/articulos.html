@@ -4,7 +4,20 @@
 
     <ul>
     {% for articulo in articulos %}
-        <li>{{articulo.id}}. {{articulo.title}}</li>
+        <li>{{articulo.id}}. {{articulo.title}}
+            <p>{{articulo.content}}</p>
+            <p>{{articulo.create_at}}</p>
+            <p>
+                {% if articulo.public %}
+                    <strong>Publico {{articulo.public}}</strong>
+                {% else %}
+                    <strong>privado{{articulo.public}}</strong>
+                {% endif %}
+                    
+            </p>
+            <a href="{% url 'borrar' articulo.id%}">Eliminar</a>
+            <br><br>
+        </li>
     {% endfor %}
     </ul>
 
