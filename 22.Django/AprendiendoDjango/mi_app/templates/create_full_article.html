@@ -1,0 +1,15 @@
+{% extends 'layout.html' %} {% block title %} crear articulo {% endblock %}
+{% block content %}
+<h1>Formularios en Django</h1>
+<form action="{% url 'save' %}" method='POST'>
+
+    {% csrf_token %}
+
+    {{ form }} {% comment %}
+    se puede poner {{ form.as_p }} para que cada elemento del formulario lo meta en un 'p', 
+    también as_ul para meterlo dentro de una lista
+    {% endcomment %}
+    
+    <input type="submit" value="Guardar">
+</form>
+{% endblock %}

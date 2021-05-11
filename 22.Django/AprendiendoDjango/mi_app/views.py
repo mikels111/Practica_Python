@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from mi_app.models import Article
-from django.db.models import Q# Para hacer consultas con 'or' 
+from django.db.models import Q  # Para hacer consultas con 'or'
+from mi_app.forms import FormArticle
 # Create your views here.
 # MVC = modelo vista controlador --> acciones (métodos)
 #        ||      ||       ||
@@ -84,6 +85,43 @@ def crear_articulo(request, title, content, public):
     return HttpResponse(f"Articulo creado: <strong>{articulo.title}</strong> {articulo.content}")
 
 
+def save_article(request):
+
+    if request.method == 'POST':
+        title = request.POST['title']
+
+        if len(title) <= 5:
+            return HttpResponse('El título es muy pequeño')
+
+        content = request.POST['content']
+        public = request.POST['public']
+
+        articulo = Article(
+            title=title,
+            content=content,
+            public=public
+        )
+
+        articulo.save()
+
+        return HttpResponse(f"Articulo creado: <strong>{articulo.title}</strong> {articulo.content}")
+    else:
+        return HttpResponse(f"No se ha podido crear el articulo")
+
+
+def create_article(request):
+
+    return render(request, 'create_article.html')
+
+
+def create_full_article(request):
+    formulario = FormArticle()
+
+    return render(request, 'create_full_article.html', {
+        'form': formulario
+    })
+
+
 def articulo(request):
     try:
         # El metodo 'get' saca un objeto(registro) del modelo
@@ -119,11 +157,11 @@ def articulos(request):
     # articulos = Article.objects.filter(
     #     title__contains='articulo')  # Condicion que contenga articulo, también se puede poner title__exact y title__iexact
     # articulos = Article.objects.filter(title='articulo', id=3)# Condicion
-    
-    # articulos = Article.objects.filter(title='articulo').exclude(public=True)#exclude va a excluir a los que tengan el campo public a true
-    articulos = Article.objects.raw('SELECT * FROM mi_app_article')
 
-    articulos = Article.objects.filter(Q(content__contains='nuevo')| Q(content__contains='3'))#la Q es necesaria para hacer consultas con 'or'
+    # articulos = Article.objects.filter(title='articulo').exclude(public=True)#exclude va a excluir a los que tengan el campo public a true
+    # articulos = Article.objects.raw('SELECT * FROM mi_app_article')
+
+    # articulos = Article.objects.filter(Q(content__contains='nuevo')| Q(content__contains='3'))#la Q es necesaria para hacer consultas con 'or'
     return render(request, 'articulos.html', {
         'articulos': articulos
     })
