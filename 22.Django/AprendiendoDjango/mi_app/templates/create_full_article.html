@@ -1,11 +1,14 @@
 {% extends 'layout.html' %} {% block title %} crear articulo {% endblock %}
 {% block content %}
 <h1>Formularios en Django</h1>
-<form action="{% url 'save' %}" method='POST'>
+{% if form.errors %} {% comment %}para detectar que hay errores{% endcomment %}
+    <strong class='error'>Hay errores en el formulario</strong>
+{% endif %}
+<form action="" method='POST'>
 
     {% csrf_token %}
 
-    {{ form }} {% comment %}
+    {{ form.as_p }} {% comment %}
     se puede poner {{ form.as_p }} para que cada elemento del formulario lo meta en un 'p', 
     también as_ul para meterlo dentro de una lista
     {% endcomment %}
