@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from mi_app.models import Article
 from django.db.models import Q  # Para hacer consultas con 'or'
 from mi_app.forms import FormArticle
+from django.contrib import messages
 # Create your views here.
 # MVC = modelo vista controlador --> acciones (métodos)
 #        ||      ||       ||
@@ -135,6 +136,9 @@ def create_full_article(request):
             )
 
             articulo.save()
+            # crear mensaje flash(sesión que sólo se muestra una vez)
+            messages.success(request, f'Articulo creado correctamente {articulo.id}')#mensajes que solo se muestra una vez
+
             return redirect('articulos') # nombre de la url a la que quieres que te lleve
 
             # return HttpResponse(title+'----'+content+'----'+str(public))
