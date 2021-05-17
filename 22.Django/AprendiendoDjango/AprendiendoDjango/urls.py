@@ -43,6 +43,6 @@ urlpatterns = [
 ]
 
 # Configuración para cargar imágenes para que se pueda ver la imagen subida en el navegador
-if settings.DEBUG: 
+if settings.DEBUG: # Si estamos en debug
     from django.conf.urls.static import static
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # añadirle al array de urls la ruta de media
