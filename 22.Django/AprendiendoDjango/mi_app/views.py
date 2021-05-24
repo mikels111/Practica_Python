@@ -175,7 +175,7 @@ def editar_articulo(request, id):
 
 def articulos(request):
     # [:3], en vez de all si ponemos order_by() se ordena por id, también se puede poner order_by(title) por la columna title
-    articulos = Article.objects.all()
+    articulos = Article.objects.filter(public=True).all()
     # [:3] es el limit, también se puede poner [3:7] para mostrar solo del 3 al 7 sin incluir el 3
 
     # se pueden poner mas de una condicion

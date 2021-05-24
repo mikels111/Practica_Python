@@ -16,6 +16,11 @@ p {
     margin-bottom: 5px;
 }
 
+.clearfix {
+    clear: both;
+    float: none;
+}
+
 
 /* Estilos cabecera */
 
@@ -84,7 +89,7 @@ nav ul li a:hover {
     background: #2ba977;
     box-shadow: 0px 0px 5px #444 inset;
     color: white;
-    transition: all 300ms;
+    /* transition: all 300ms; */
 }
 
 .barra {
@@ -194,6 +199,60 @@ nav ul li a:hover {
     letter-spacing: 1px;
     font-size: 30px;
     margin-bottom: 10px;
+}
+
+
+/* Estilos de articulos */
+
+.article-item {
+    margin: 30px 0px;
+    /* background-color: #22835c; */
+    border-bottom: solid 1px #eee;
+    padding: 15px;
+    clear: both;
+}
+
+.article-item .image {
+    width: 300px;
+    height: 170px;
+    float: left;
+    overflow: hidden;
+}
+
+.article-item .image img {
+    width: 100%;
+}
+
+.article-item .data {
+    float: left;
+    padding-left: 20px;
+}
+
+.article-item .data .date {
+    margin-top: 20px;
+    color: #696969;
+}
+
+.btn {
+    padding: 5px;
+    border-radius: 4px;
+    color: inherit;
+}
+
+.btn-delete {
+    background-color: rgb(211, 26, 26);
+    color: white;
+}
+
+.data .btn-delete {
+    width: 58px;
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.data .btn-delete:hover {
+    background-color: rgb(179, 22, 22);
 }
 
 footer {

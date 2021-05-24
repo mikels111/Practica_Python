@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.conf import settings #Para acceder al directorio media
+from django.conf import settings  # Para acceder al directorio media
 
 # importar app con mis vistas
 # from mi_app import views
-import mi_app.views 
+import mi_app.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,14 +27,17 @@ urlpatterns = [
     path('inicio/', mi_app.views.index, name='inicio'),
     path('pagina/', mi_app.views.pagina, name='pagina'),
     path('pagina/<int:redirigir>', mi_app.views.pagina, name='pagina'),
-    path('',mi_app.views.index, name='index'),
-    path('contacto/',mi_app.views.contacto, name='contacto'),
-    path('contacto/<str:nombre>/',mi_app.views.contacto, name='contacto'),
-    path('contacto/<str:apellido>',mi_app.views.contacto, name='contacto'),
-    path('contacto/<str:nombre>/<str:apellido>',mi_app.views.contacto, name='contacto'),
-    path('crear_articulo/<str:title>/<str:content>/<str:public>', mi_app.views.crear_articulo, name='crear_articulo'),
+    path('', mi_app.views.index, name='index'),
+    path('contacto/', mi_app.views.contacto, name='contacto'),
+    path('contacto/<str:nombre>/', mi_app.views.contacto, name='contacto'),
+    path('contacto/<str:apellido>', mi_app.views.contacto, name='contacto'),
+    path('contacto/<str:nombre>/<str:apellido>',
+         mi_app.views.contacto, name='contacto'),
+    path('crear_articulo/<str:title>/<str:content>/<str:public>',
+         mi_app.views.crear_articulo, name='crear_articulo'),
     path('articulo/', mi_app.views.articulo, name='articulo'),
-    path('articulo_edit/<int:id>', mi_app.views.editar_articulo, name='editar_articulo'),
+    path('articulo_edit/<int:id>',
+         mi_app.views.editar_articulo, name='editar_articulo'),
     path('articulos/', mi_app.views.articulos, name='articulos'),
     path('borrar-articulo/<int:id>', mi_app.views.borrar_articulo, name='borrar'),
     path('save-article/', mi_app.views.save_article, name='save'),
@@ -43,6 +46,9 @@ urlpatterns = [
 ]
 
 # Configuración para cargar imágenes para que se pueda ver la imagen subida en el navegador
-if settings.DEBUG: # Si estamos en debug
+if settings.DEBUG:  # Si estamos en debug
     from django.conf.urls.static import static
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # añadirle al array de urls la ruta de media
+    # añadirle al array de urls la ruta de media
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
+
