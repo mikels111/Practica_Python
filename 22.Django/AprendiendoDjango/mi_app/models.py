@@ -7,15 +7,10 @@ class Article(models.Model):
     # El vervose_name es para decir como se va ver en el panel de control de Django
     title = models.CharField(max_length=100, verbose_name='Título')
     content = models.TextField(verbose_name='Contenido')
-    image = models.ImageField(
-        default='null', verbose_name='Imagen', upload_to='articles')
-    public = models.BooleanField(verbose_name='Publicado')
-    # auto_now_add en true indica cuando se crea
-    create_at = models.DateTimeField(
-        auto_now_add=True, verbose_name='Creado el')
-    # auto_now indica cuando se actualiza
-    updated_at = models.DateTimeField(
-        auto_now=True, verbose_name='Actualizado el')
+    image = models.ImageField(default='null', verbose_name='Imagen', upload_to='articles')
+    public = models.BooleanField(verbose_name='Publicado')# auto_now_add en true indica cuando se crea
+    create_at = models.DateTimeField(auto_now_add=True, verbose_name='Creado el')# auto_now indica cuando se actualiza
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='Actualizado el')
 
     class Meta:  # Para mostrar como queramos en el panel de control
         verbose_name = 'Articulo'  # Para decirle como se va llamar el modelo en singular
@@ -27,7 +22,7 @@ class Article(models.Model):
             publico = "(Publicado)"
 
         else:
-            publico = 'Privado)'
+            publico = '(Privado)'
 
         return f"{self.title} {publico}"
 
