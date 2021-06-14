@@ -1,12 +1,13 @@
 from django.db import models
 from django.db.models.base import Model
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
 
 class Page(models.Model):
     title = models.CharField(max_length=50, verbose_name='Titulo')
-    content = models.TextField(verbose_name='Contenido')
+    content = RichTextField(verbose_name='Contenido')
     slug = models.CharField(unique=True, max_length=150,
                             verbose_name='url amigable')
     visible = models.BooleanField(verbose_name='Estado')
