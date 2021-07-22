@@ -1,0 +1,20 @@
+<span class='actual'>
+    Pagina {{articles.number}} de {{articles.paginator.num_pages}}
+</span>
+<div style="margin-top:20px;" class="pagination">
+    {% comment %}
+        if para saber si hay paginas previas; es para poner el botón de atras
+    {% endcomment %}
+    {% if articles.has_previous %}
+        <a href="?pagina={{articles.previous_page_number}}">
+            &larr;{{articles.previous_page_number}}
+        </a>
+    {% endif %}
+    {% if articles.has_next %}
+        <a href="?pagina={{articles.next_page_number}}">
+            {{articles.next_page_number}}&rarr;
+        </a>
+        <a href="?pagina={{articles.paginator.num_pages}}">&rarrb;</a>    
+    {% endif %}
+
+</div>

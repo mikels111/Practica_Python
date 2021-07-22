@@ -4,6 +4,11 @@
 
 {% block content %}
     <h1>{{title}}</h1>
-    {{pages}}
+    {% comment %} Para mensajes del registro {% endcomment %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="message">{{message}}</div>
+        {% endfor %}
+    {% endif %}
 {% endblock content %}
 

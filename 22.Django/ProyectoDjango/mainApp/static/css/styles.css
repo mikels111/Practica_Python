@@ -68,28 +68,64 @@ nav {
     font-size: 15px;
 }
 
-nav ul {
+nav>ul {
     list-style: none;
     text-decoration: none;
 }
 
-nav ul li {
+nav>ul>li {
     line-height: 40px;
     float: left;
 }
 
-nav ul li a {
+nav>ul>li>a {
     display: block;
     padding-left: 15px;
     padding-right: 15px;
     color: #d1d4d6;
+    text-decoration: none;
 }
 
-nav ul li a:hover {
+nav>ul>li>a:hover {
     background: #2ba977;
-    box-shadow: 0px 0px 5px #444 inset;
     color: white;
+    border-radius: 2px;
     /* transition: all 300ms; */
+}
+
+nav>ul>li>ul {
+    display: none;
+    position: absolute;
+    color: white;
+    text-align: center;
+    width: 160px;
+    background-color: black;
+}
+
+nav>ul>li:hover>ul {
+    display: block;
+    /* color: white; */
+    list-style: none;
+    box-shadow: 0px 0px 10px black;
+    border-radius: 5px;
+}
+
+nav>ul>li>ul>li a {
+    color: white;
+    display: block;
+}
+
+nav>ul>li:hover>ul>li {
+    display: block;
+    list-style: none;
+    border-bottom: 1px solid grey;
+}
+
+nav>ul>li:hover>ul>li:hover {
+    background-color: #2ba977;
+    box-shadow: 0px 0px 0px 3px #2ba977;
+    border-radius: 1px;
+    border-bottom: none;
 }
 
 .barra {
@@ -139,6 +175,14 @@ nav ul li a:hover {
     margin: 0 auto;
 }
 
+a {
+    color: #444;
+}
+
+a:hover {
+    color: #22835c
+}
+
 .box form {
     width: 40%;
 }
@@ -150,10 +194,13 @@ nav ul li a:hover {
     padding-left: 0px;
 }
 
+.box form input[type='password'],
+.box form input[type='email'],
 .box form input[type='text'],
 .box form textarea {
     width: 100%;
     margin-bottom: 10px;
+    border-radius: 4px;
 }
 
 .box form select {
@@ -185,7 +232,7 @@ nav ul li a:hover {
 }
 
 .message {
-    border: solid 2px #22835c;
+    background-color: #00b16a3f;
     text-align: center;
     width: 30%;
     height: 50px;
@@ -276,4 +323,19 @@ footer {
     padding-top: 10px;
     padding-bottom: 10px;
     box-shadow: 0px 0px 20px gray;
+}
+
+
+/* Estilos paginación */
+
+.pagination a {
+    border: #22835c solid 2px;
+    padding: 6px;
+    border-radius: 3px;
+    margin: 0px 5px 0px 5px;
+    font-size: 20px;
+}
+
+.pagination a:hover {
+    background-color: rgb(216, 216, 216);
 }

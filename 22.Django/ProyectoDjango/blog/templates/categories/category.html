@@ -1,0 +1,11 @@
+{% extends 'layouts/layout.html'%} 
+{% block title %}{{category.name}}{% endblock title %} 
+{% block content %}
+<h2 class='title'>{{title}}</h2>
+    <h1 class="title">{{category.name}}</h1>
+    <p>{{category.descripcion}}</p>
+{% include 'articles/articles.html' with articles=category.article_set.all%}
+{% comment %} 
+    el 'with' no es necesario si en 'views.py' le pasas "articles"
+ {% endcomment %}
+{% endblock content %}
